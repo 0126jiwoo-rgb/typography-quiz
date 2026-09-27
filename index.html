@@ -108,22 +108,21 @@
     padding:28px 20px 16px;
   }
   .home-btn{
-    background:#fff;
-    border:1.5px solid var(--line);
+    background:none;
+    border:none;
     color:var(--accent-hover);
     width:38px;
     height:38px;
     padding:0;
-    border-radius:50%;
     cursor:pointer;
     display:none;
     align-items:center;
     justify-content:center;
-    transition:border-color .1s ease, background .1s ease;
+    transition:color .1s ease;
   }
   .home-btn svg{display:block;}
   .home-btn.show{display:inline-flex;}
-  .home-btn:hover{border-color:var(--accent);background:var(--chip);}
+  .home-btn:hover{color:var(--accent);}
 
   .info-kicker{
     font-family:var(--badge-font);
