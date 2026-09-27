@@ -291,7 +291,7 @@
   .word-bank{
     margin-top:18px;
     padding:14px 16px;
-    background:var(--chip);
+    background:#fff;
     border:1.5px dashed var(--line);
     border-radius:16px;
   }
@@ -309,8 +309,8 @@
     gap:8px;
   }
   .word-chip{
-    background:#fff;
-    border:1.5px solid var(--line);
+    background:#fde8ee;
+    border:1.5px solid #f6d3e0;
     border-radius:20px;
     padding:7px 14px;
     font-size:14px;
@@ -319,8 +319,10 @@
     color:var(--ink);
     transition:border-color .12s ease, background .12s ease, transform .1s ease;
   }
-  .word-chip:hover{border-color:var(--accent2);background:#f2f6ef;transform:translateY(-1px);}
-  .word-chip.picked{border-color:var(--accent);background:var(--accent);color:#fff;font-weight:600;}
+  .word-chip:nth-of-type(3n+2){background:#e5f2fb;border-color:#c9e4f4;}
+  .word-chip:nth-of-type(3n+3){background:#e8f5ec;border-color:#cde9d5;}
+  .word-chip:hover{transform:translateY(-1px);filter:brightness(0.97);}
+  .word-chip.picked{border-color:var(--accent);background:var(--accent);color:#fff;font-weight:600;filter:none;}
 
   form.answer-form{
     margin-top:26px;
