@@ -6,7 +6,7 @@
 <title>GRDS 353 Typography Quiz</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Cormorant+Garamond&family=Goudy+Bookletter+1911&family=Noto+Serif&family=Cinzel&family=Crimson+Text&family=Vollkorn&family=Playfair+Display&family=Roboto+Slab&family=Zilla+Slab&family=Arvo&family=Bevan&family=Libre+Franklin&family=Work+Sans&family=Roboto&family=Inter:wght@400;500;600;700&family=Noto+Sans&family=Fira+Sans&family=PT+Sans&family=Overpass&family=Montserrat&family=DM+Sans&family=Varela+Round&family=Quicksand&family=Baloo+2&family=UnifrakturMaguntia&family=Fredoka:wght@500;600;700&family=Caveat:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Cormorant+Garamond&family=Goudy+Bookletter+1911&family=Noto+Serif&family=Cinzel&family=Crimson+Text&family=Vollkorn&family=Playfair+Display&family=Roboto+Slab&family=Zilla+Slab&family=Arvo&family=Bevan&family=Libre+Franklin&family=Work+Sans&family=Roboto&family=Inter:wght@400;500;600;700&family=Noto+Sans&family=Fira+Sans&family=PT+Sans&family=Overpass&family=Montserrat&family=DM+Sans&family=Varela+Round&family=Quicksand&family=Baloo+2&family=UnifrakturMaguntia&family=Fredoka:wght@500;600;700&family=Yellowtail&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg-a:#fdf8f2;
@@ -29,7 +29,7 @@
     --chip:#fde8ee;
     --ui-font:'Poppins',-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
     --display-font:'Fredoka','Poppins',sans-serif;
-    --script-font:'Caveat',cursive;
+    --script-font:'Yellowtail',cursive;
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
@@ -95,26 +95,29 @@
     color:var(--accent-hover);
   }
   .home-btn{
-    background:#fff;
-    border:1.5px solid var(--line);
-    color:var(--accent-hover);
-    width:38px;
-    height:38px;
+    background:linear-gradient(180deg,#ffd3e0,var(--accent));
+    border:2.5px solid #fff;
+    color:#fff;
+    width:40px;
+    height:40px;
     padding:0;
     border-radius:50%;
     cursor:pointer;
     display:none;
     align-items:center;
     justify-content:center;
+    box-shadow:0 3px 0 var(--accent-hover), 0 6px 14px rgba(242,121,158,.4);
+    transition:transform .08s ease, box-shadow .08s ease;
   }
-  .home-btn svg{display:block;}
+  .home-btn svg{display:block;filter:drop-shadow(0 1px 1px rgba(160,60,90,.3));}
   .home-btn.show{display:inline-flex;}
-  .home-btn:hover{border-color:var(--accent);background:var(--chip);}
+  .home-btn:hover{transform:translateY(1px);box-shadow:0 2px 0 var(--accent-hover), 0 4px 10px rgba(242,121,158,.4);}
+  .home-btn:active{transform:translateY(3px);box-shadow:none;}
 
   .script-kicker{
     font-family:var(--script-font);
-    font-size:22px;
-    font-weight:600;
+    font-size:28px;
+    font-weight:400;
     color:var(--accent2-hover);
     transform:rotate(-3deg);
     display:inline-block;
@@ -368,13 +371,6 @@
     background:rgba(255,255,255,.6);
     border-radius:999px;
     filter:blur(1px);
-    pointer-events:none;
-  }
-  button.primary::after{
-    content:"";
-    position:absolute; inset:0;
-    background:repeating-linear-gradient(115deg, rgba(255,255,255,.22) 0 8px, transparent 8px 22px);
-    mix-blend-mode:overlay;
     pointer-events:none;
   }
   button.primary:hover{transform:translateY(1px);box-shadow:0 5px 0 var(--accent-hover), 0 9px 18px rgba(242,121,158,.4), 0 0 0 5px rgba(242,121,158,.16);}
@@ -689,7 +685,7 @@ function renderHome(){
   homeBtn.classList.remove("show");
   app.innerHTML = `
     <div class="main-col">
-      <span class="script-kicker">let's memorize~</span>
+      <span class="script-kicker">you've got this~</span>
       <h1 class="title">Typography Quiz</h1>
       <p class="subtitle">Do round 1, then redo only the ones you missed until you get them all right, then finish with one more full round.</p>
       <div class="mode-grid">
