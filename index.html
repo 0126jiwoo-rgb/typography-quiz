@@ -6,34 +6,34 @@
 <title>GRDS 353 Typography Quiz</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Cormorant+Garamond&family=Goudy+Bookletter+1911&family=Noto+Serif&family=Cinzel&family=Crimson+Text&family=Vollkorn&family=Playfair+Display&family=Roboto+Slab&family=Zilla+Slab&family=Arvo&family=Bevan&family=Libre+Franklin&family=Work+Sans&family=Roboto&family=Inter:wght@400;500;600;700&family=Noto+Sans&family=Fira+Sans&family=PT+Sans&family=Overpass&family=Montserrat&family=DM+Sans&family=Poppins&family=Varela+Round&family=Quicksand&family=Baloo+2&family=UnifrakturMaguntia&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Cormorant+Garamond&family=Goudy+Bookletter+1911&family=Noto+Serif&family=Cinzel&family=Crimson+Text&family=Vollkorn&family=Playfair+Display&family=Roboto+Slab&family=Zilla+Slab&family=Arvo&family=Bevan&family=Libre+Franklin&family=Work+Sans&family=Roboto&family=Inter:wght@400;500;600;700&family=Noto+Sans&family=Fira+Sans&family=PT+Sans&family=Overpass&family=Montserrat&family=DM+Sans&family=Varela+Round&family=Quicksand&family=Baloo+2&family=UnifrakturMaguntia&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg-a:#faf5f4;
-    --bg-b:#f0dde1;
-    --card:#ffffff;
-    --ink:#3a2a4a;
-    --sub:#93809f;
-    --line:#f6d3e6;
-    --accent:#ff4f9a;
-    --accent-hover:#ef2f83;
-    --accent2:#3aa8ff;
-    --accent2-hover:#1c8ce8;
-    --good:#16a463;
-    --good-bg:#e4f9ef;
-    --bad:#ef4444;
-    --bad-bg:#fde8e6;
-    --chip:#ffe6f2;
-    --ui-font:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
-    --display-font:'Fredoka','Inter',sans-serif;
+    --bg-a:#fffcfb;
+    --bg-b:#fbeff0;
+    --card:#fffdfc;
+    --ink:#4a3b42;
+    --sub:#a8929b;
+    --line:#f1e0e2;
+    --accent:#d88a9f;
+    --accent-hover:#c06f86;
+    --accent2:#9db28d;
+    --accent2-hover:#84996f;
+    --good:#4d9a6f;
+    --good-bg:#eaf5ee;
+    --bad:#d9686b;
+    --bad-bg:#faeceb;
+    --chip:#faeef1;
+    --ui-font:'Poppins',-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    --display-font:'Fraunces','Georgia',serif;
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
     background:
       repeating-linear-gradient(90deg,
-        var(--bg-a) 0px, var(--bg-a) 46px,
-        var(--bg-b) 46px, var(--bg-b) 92px);
+        var(--bg-a) 0px, var(--bg-a) 64px,
+        var(--bg-b) 64px, var(--bg-b) 128px);
     background-attachment:fixed;
     color:var(--ink);
     font-family:var(--ui-font);
@@ -83,18 +83,19 @@
   .brand{
     font-family:var(--display-font);
     font-weight:600;
-    font-size:15px;
-    letter-spacing:.02em;
-    color:var(--accent);
+    font-style:italic;
+    font-size:16px;
+    letter-spacing:.01em;
+    color:var(--accent-hover);
   }
   .home-btn{
     background:#fff;
-    border:2px solid var(--line);
-    color:var(--accent);
+    border:1.5px solid var(--line);
+    color:var(--accent-hover);
     padding:6px 14px;
     border-radius:20px;
     font-size:13px;
-    font-weight:600;
+    font-weight:500;
     font-family:var(--ui-font);
     cursor:pointer;
     display:none;
@@ -103,13 +104,29 @@
   .home-btn:hover{border-color:var(--accent);background:var(--chip);}
 
   h1.title{
+    position:relative;
     font-family:var(--display-font);
-    font-size:38px;
-    margin:20px 0 6px;
+    font-size:40px;
+    margin:20px 0 24px;
+    padding-bottom:18px;
     font-weight:600;
     letter-spacing:-.01em;
     color:var(--ink);
-    text-shadow:3px 3px 0 var(--chip);
+  }
+  h1.title::after{
+    content:"";
+    position:absolute;
+    left:1px; bottom:2px;
+    width:46px; height:2px;
+    background:var(--accent2);
+  }
+  h1.title::before{
+    content:"";
+    position:absolute;
+    left:54px; bottom:0;
+    width:7px; height:7px;
+    border-radius:50%;
+    background:var(--accent);
   }
   p.subtitle{
     color:var(--sub);
@@ -125,8 +142,8 @@
   }
   .mode-card{
     background:var(--card);
-    border:2px solid var(--line);
-    border-radius:20px;
+    border:1.5px solid var(--line);
+    border-radius:18px;
     padding:20px 22px;
     text-align:left;
     cursor:pointer;
@@ -136,15 +153,15 @@
     justify-content:space-between;
   }
   .mode-card:hover{
-    transform:translateY(-2px) rotate(-.3deg);
-    box-shadow:0 10px 26px rgba(255,79,154,.18);
+    transform:translateY(-2px);
+    box-shadow:0 10px 24px rgba(216,138,159,.16);
     border-color:var(--accent);
   }
   .mode-card .mtext h3{
     margin:0 0 4px;
-    font-size:19px;
+    font-size:17px;
     font-weight:600;
-    font-family:var(--display-font);
+    font-family:var(--ui-font);
     color:var(--ink);
   }
   .mode-card .mtext p{
@@ -199,10 +216,10 @@
 
   .card{
     background:var(--card);
-    border:2px solid var(--line);
-    border-radius:26px;
+    border:1.5px solid var(--line);
+    border-radius:22px;
     padding:36px 28px;
-    box-shadow:0 14px 34px rgba(255,79,154,.14);
+    box-shadow:0 14px 34px rgba(216,138,159,.12);
   }
 
   .q-kicker{
@@ -237,8 +254,8 @@
   .word-bank{
     margin-top:18px;
     padding:14px 16px;
-    background:#fff6fb;
-    border:2px dashed var(--line);
+    background:var(--chip);
+    border:1.5px dashed var(--line);
     border-radius:16px;
   }
   .word-bank-label{
@@ -256,7 +273,7 @@
   }
   .word-chip{
     background:#fff;
-    border:2px solid var(--line);
+    border:1.5px solid var(--line);
     border-radius:20px;
     padding:7px 14px;
     font-size:14px;
@@ -265,7 +282,7 @@
     color:var(--ink);
     transition:border-color .12s ease, background .12s ease, transform .1s ease;
   }
-  .word-chip:hover{border-color:var(--accent2);background:#eef8ff;transform:translateY(-1px);}
+  .word-chip:hover{border-color:var(--accent2);background:#f2f6ef;transform:translateY(-1px);}
   .word-chip.picked{border-color:var(--accent);background:var(--accent);color:#fff;font-weight:600;}
 
   form.answer-form{
@@ -276,14 +293,14 @@
     font-size:17px;
     padding:14px 16px;
     border-radius:14px;
-    border:2px solid var(--line);
+    border:1.5px solid var(--line);
     background:#fffbfd;
     color:var(--ink);
     outline:none;
     transition:border-color .12s ease;
     font-family:var(--ui-font);
   }
-  input[type=text]:focus{border-color:var(--accent2);}
+  input[type=text]:focus{border-color:var(--accent);}
   input[type=text].correct{border-color:var(--good);background:var(--good-bg);}
   input[type=text].wrong{border-color:var(--bad);background:var(--bad-bg);}
 
@@ -308,43 +325,41 @@
     position:relative;
     overflow:hidden;
     flex:1;
-    background:linear-gradient(180deg,#6cc4ff,var(--accent2) 55%,var(--accent2-hover));
+    background:linear-gradient(180deg,var(--accent),var(--accent-hover));
     color:#fff;
-    border:2px solid #fff;
+    border:none;
     padding:14px 18px;
     border-radius:999px;
-    font-size:16px;
-    font-weight:700;
-    font-family:var(--display-font);
-    letter-spacing:.02em;
+    font-size:15px;
+    font-weight:600;
+    font-family:var(--ui-font);
+    letter-spacing:.01em;
     cursor:pointer;
-    box-shadow:0 8px 0 var(--accent2-hover), 0 14px 24px rgba(58,168,255,.35);
-    transition:transform .08s ease, box-shadow .08s ease;
+    box-shadow:0 6px 18px rgba(192,111,134,.35);
+    transition:transform .1s ease, box-shadow .1s ease, background .1s ease;
   }
   button.primary::before{
     content:"";
     position:absolute;
-    top:2px; left:8%;
-    width:84%; height:38%;
-    background:rgba(255,255,255,.55);
-    border-radius:999px;
-    filter:blur(1px);
+    top:0; left:0;
+    width:100%; height:52%;
+    background:linear-gradient(180deg,rgba(255,255,255,.28),rgba(255,255,255,0));
     pointer-events:none;
   }
-  button.primary:hover{transform:translateY(1px);box-shadow:0 6px 0 var(--accent2-hover), 0 10px 18px rgba(58,168,255,.35);}
-  button.primary:active{transform:translateY(4px);box-shadow:0 2px 0 var(--accent2-hover);}
+  button.primary:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(192,111,134,.4);}
+  button.primary:active{transform:translateY(1px);box-shadow:0 4px 10px rgba(192,111,134,.3);}
   button.ghost{
     background:#fff;
-    border:2px solid var(--line);
+    border:1.5px solid var(--line);
     color:var(--sub);
     padding:14px 18px;
     border-radius:999px;
     font-size:14px;
-    font-weight:600;
+    font-weight:500;
     font-family:var(--ui-font);
     cursor:pointer;
   }
-  button.ghost:hover{border-color:var(--accent);color:var(--accent);}
+  button.ghost:hover{border-color:var(--accent);color:var(--accent-hover);}
 
   .hint{
     margin-top:10px;
@@ -370,8 +385,8 @@
   }
   .missed-list{
     text-align:left;
-    background:#fff6fb;
-    border:2px solid var(--line);
+    background:var(--chip);
+    border:1.5px solid var(--line);
     border-radius:16px;
     padding:14px 16px;
     margin-bottom:24px;
@@ -394,8 +409,8 @@
   }
   .stat{
     flex:1;
-    background:#fff6fb;
-    border:2px solid var(--line);
+    background:var(--chip);
+    border:1.5px solid var(--line);
     border-radius:16px;
     padding:14px 8px;
     text-align:center;
@@ -597,22 +612,15 @@ function isCorrect(input, item){
   return candidates.some(c => dropTrailingS(c) === normNoS);
 }
 
-function sansFonts(){
-  return FONTS.filter(f => f.group === "sans");
+function fontsInGroup(group){
+  return FONTS.filter(f => f.group === group);
 }
 
 function getDeck(mode){
   if(mode==="terms") return TERMS;
   if(mode==="fonts") return FONTS;
-  if(mode==="sans-typeface") return sansFonts();
-  if(mode==="sans-category") return sansFonts().map(f => ({
-    id: f.id+"-cat",
-    answer: f.category,
-    img: f.img,
-    family: f.family,
-    category: f.category,
-    group: f.group
-  }));
+  if(mode==="font-serif") return fontsInGroup("serif");
+  if(mode==="font-sans") return fontsInGroup("sans");
   return [...TERMS, ...FONTS];
 }
 
@@ -633,14 +641,6 @@ function buildWordBank(item, size=6, pool=FONTS){
   return shuffle([item, ...distractors]).map(f => f.answer);
 }
 
-// Same idea, but the bank holds category names instead of typeface names —
-// used by the sans-serif "guess the category" quiz.
-function buildCategoryWordBank(correctCategory, size=6){
-  const cats = [...new Set(sansFonts().map(f => f.category))];
-  const others = shuffle(cats.filter(c => c !== correctCategory));
-  return shuffle([correctCategory, ...others.slice(0, size-1)]);
-}
-
 /* ---------------------------------------------------------
    RENDER: HOME
 --------------------------------------------------------- */
@@ -657,28 +657,24 @@ function renderHome(){
       <p class="subtitle">Do round 1, then redo only the ones you missed until you get them all right, then finish with one more full round.</p>
       <div class="mode-grid">
         <div class="mode-card" data-mode="terms">
-          <div class="mtext"><h3>💬 Terms Quiz</h3><p>Read the definition, type the term</p></div>
+          <div class="mtext"><h3>Terms Quiz</h3><p>Read the definition, type the term</p></div>
           <div class="count">${TERMS.length} questions</div>
         </div>
-        <div class="mode-card" data-mode="fonts">
-          <div class="mtext"><h3>🔤 Font Quiz</h3><p>Look at the specimen, type the typeface name</p></div>
+        <div class="mode-card" data-mode="font-menu">
+          <div class="mtext"><h3>Font Quiz</h3><p>Look at the specimen, type the typeface name</p></div>
           <div class="count">${FONTS.length} questions</div>
         </div>
         <div class="mode-card" data-mode="all">
-          <div class="mtext"><h3>🎀 Full Review</h3><p>Terms + Fonts combined</p></div>
+          <div class="mtext"><h3>Full Review</h3><p>Terms + Fonts combined</p></div>
           <div class="count">${TERMS.length+FONTS.length} questions</div>
-        </div>
-        <div class="mode-card" data-mode="sans-menu">
-          <div class="mtext"><h3>🩵 Sans Serif Quiz</h3><p>Typeface name and category practice, sans-serif only</p></div>
-          <div class="count">${sansFonts().length} typefaces</div>
         </div>
       </div>
     </div>
   `;
   document.querySelectorAll(".mode-card").forEach(el=>{
     el.addEventListener("click", ()=>{
-      if(el.dataset.mode === "sans-menu"){
-        renderSansMenu();
+      if(el.dataset.mode === "font-menu"){
+        renderFontMenu();
       } else {
         startQuiz(el.dataset.mode);
       }
@@ -686,21 +682,25 @@ function renderHome(){
   });
 }
 
-function renderSansMenu(){
+function renderFontMenu(){
   state = null;
   homeBtn.classList.add("show");
   app.innerHTML = `
     <div class="main-col">
-      <h1 class="title">Sans Serif Quiz</h1>
-      <p class="subtitle">Pick a mode. Both only use the ${sansFonts().length} sans-serif typefaces from the guide.</p>
+      <h1 class="title">Font Quiz</h1>
+      <p class="subtitle">Pick which typefaces to practice.</p>
       <div class="mode-grid">
-        <div class="mode-card" data-mode="sans-typeface">
-          <div class="mtext"><h3>✏️ Typeface Quiz</h3><p>Look at the specimen, type the typeface name</p></div>
-          <div class="count">${sansFonts().length} questions</div>
+        <div class="mode-card" data-mode="font-serif">
+          <div class="mtext"><h3>Serif</h3><p>Old Style, Transitional, Modern, Slab, Glyphic</p></div>
+          <div class="count">${fontsInGroup("serif").length} questions</div>
         </div>
-        <div class="mode-card" data-mode="sans-category">
-          <div class="mtext"><h3>🗂️ Category Quiz</h3><p>Look at the specimen, name its category (Grotesque, Geometric, Rounded, ...)</p></div>
-          <div class="count">${sansFonts().length} questions</div>
+        <div class="mode-card" data-mode="font-sans">
+          <div class="mtext"><h3>Sans Serif</h3><p>Grotesque, Geometric, Humanist, Rounded</p></div>
+          <div class="count">${fontsInGroup("sans").length} questions</div>
+        </div>
+        <div class="mode-card" data-mode="fonts">
+          <div class="mtext"><h3>Full</h3><p>Every typeface in the guide</p></div>
+          <div class="count">${FONTS.length} questions</div>
         </div>
       </div>
     </div>
@@ -746,13 +746,10 @@ function renderQuestion(){
   state.answered = false;
   const item = currentItem();
   const isFont = !!(item.family || item.img);
-  const isCategoryMode = state.mode === "sans-category";
   const total = state.queue.length;
   const pct = Math.round((state.idx/total)*100);
   const showBank = isFont && state.globalRound >= 3;
-  const bank = showBank
-    ? (isCategoryMode ? buildCategoryWordBank(item.answer) : buildWordBank(item, 6, state.deck))
-    : null;
+  const bank = showBank ? buildWordBank(item, 6, state.deck) : null;
 
   const cardHTML = `
     <div class="progress-row">
@@ -763,7 +760,7 @@ function renderQuestion(){
 
     <div class="card">
       ${isFont ? `
-        <div class="q-kicker">${isCategoryMode ? "Which category does this typeface belong to?" : "What is the name of this typeface?"}</div>
+        <div class="q-kicker">What is the name of this typeface?</div>
         ${item.img ? `
         <div class="font-specimen">
           <img class="specimen-img" src="${item.img}" alt="Typeface specimen">
