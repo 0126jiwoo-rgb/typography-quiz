@@ -97,6 +97,16 @@
     user-select:none;
     -webkit-text-stroke:0;
   }
+  .decor-star-wide{
+    display:none;
+    position:fixed;
+    pointer-events:none;
+    user-select:none;
+    -webkit-text-stroke:0;
+  }
+  @media (min-width:1100px){
+    .decor-star-wide{display:inline-block;}
+  }
   header.top{
     display:flex;
     align-items:center;
@@ -710,10 +720,9 @@ function renderHome(){
       <div class="home-decor">
         <span class="decor-star" style="top:-4px;left:6%;font-size:13px;color:var(--accent2);transform:rotate(-16deg);">★</span>
         <span class="decor-star" style="top:38px;right:10%;font-size:11px;color:var(--accent);transform:rotate(18deg);">★</span>
-        <span class="decor-star" style="top:150px;left:-20px;font-size:12px;color:var(--accent3);transform:rotate(10deg);">★</span>
-        <span class="decor-star" style="top:260px;right:-22px;font-size:14px;color:var(--accent);transform:rotate(-12deg);">★</span>
-        <span class="decor-star" style="top:420px;left:-16px;font-size:11px;color:var(--accent2);transform:rotate(20deg);">★</span>
-        <span class="decor-star" style="bottom:10px;right:-18px;font-size:12px;color:var(--accent3);transform:rotate(-20deg);">★</span>
+        <span class="decor-star-wide" style="left:9%;top:45%;font-size:14px;color:var(--accent3);transform:rotate(10deg);">★</span>
+        <span class="decor-star-wide" style="right:13%;top:20%;font-size:12px;color:var(--accent);transform:rotate(-12deg);">★</span>
+        <span class="decor-star-wide" style="right:6%;top:83%;font-size:13px;color:var(--accent2);transform:rotate(20deg);">★</span>
         <div class="hero-center">
           <span class="info-kicker">${TERMS.length} terms · ${FONTS.length} typefaces</span>
           <h1 class="title"><span class="title-text">Typography Quiz</span></h1>
