@@ -111,6 +111,7 @@
     display:flex;
     align-items:center;
     justify-content:flex-end;
+    gap:10px;
     width:100%;
     max-width:960px;
     padding:18px 20px 0;
@@ -485,6 +486,11 @@
 <body>
 
 <header class="top">
+  <button class="home-btn" id="backBtn" aria-label="Back" title="Back">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 5 8 12l7 7"/>
+    </svg>
+  </button>
   <button class="home-btn" id="homeBtn" aria-label="Home" title="Home">
     <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M3 11.5 12 4l9 7.5"/>
@@ -726,10 +732,18 @@ function buildCategoryWordBank(correctCategory, size=6){
 --------------------------------------------------------- */
 const app = document.getElementById("app");
 const homeBtn = document.getElementById("homeBtn");
+const backBtn = document.getElementById("backBtn");
 homeBtn.addEventListener("click", renderHome);
+
+// Tracks which screen "Back" should return to. During a quiz this is the
+// selection screen it was launched from, not the previous question.
+let backFn = null;
+backBtn.addEventListener("click", ()=>{ if(backFn) backFn(); });
 
 function renderHome(){
   state = null;
+  backFn = null;
+  backBtn.classList.remove("show");
   homeBtn.classList.remove("show");
   app.innerHTML = `
     <div class="main-col">
@@ -774,6 +788,8 @@ function renderHome(){
 
 function renderFontMenu(){
   state = null;
+  backFn = renderHome;
+  backBtn.classList.add("show");
   homeBtn.classList.add("show");
   app.innerHTML = `
     <div class="main-col">
@@ -808,6 +824,8 @@ function renderFontMenu(){
 
 function renderSansMenu(){
   state = null;
+  backFn = renderFontMenu;
+  backBtn.classList.add("show");
   homeBtn.classList.add("show");
   app.innerHTML = `
     <div class="main-col">
@@ -847,6 +865,14 @@ function startQuiz(mode){
     globalRound: 1,         // counts every round across drill+final phases
     stats: { asked:0, correctFirstTry:0 }
   };
+  if(mode === "font-sans" || mode === "font-category"){
+    backFn = renderSansMenu;
+  } else if(mode === "font-serif" || mode === "fonts"){
+    backFn = renderFontMenu;
+  } else {
+    backFn = renderHome;
+  }
+  backBtn.classList.add("show");
   homeBtn.classList.add("show");
   renderQuestion();
 }
