@@ -565,19 +565,32 @@ function isCorrect(input, item){
   return candidates.some(c => dropTrailingS(c) === normNoS);
 }
 
+function sansFonts(){
+  return FONTS.filter(f => f.group === "sans");
+}
+
 function getDeck(mode){
   if(mode==="terms") return TERMS;
   if(mode==="fonts") return FONTS;
+  if(mode==="sans-typeface") return sansFonts();
+  if(mode==="sans-category") return sansFonts().map(f => ({
+    id: f.id+"-cat",
+    answer: f.category,
+    img: f.img,
+    family: f.family,
+    category: f.category,
+    group: f.group
+  }));
   return [...TERMS, ...FONTS];
 }
 
 // Builds a small set of typeface names (the correct answer + look-alike
 // distractors) to show as a reference "word bank" once rounds get hard.
-function buildWordBank(item, size=6){
-  const pool = FONTS.filter(f => f.id !== item.id);
-  const sameCategory = shuffle(pool.filter(f => f.category === item.category));
-  const sameGroup = shuffle(pool.filter(f => f.group === item.group && f.category !== item.category));
-  const rest = shuffle(pool.filter(f => f.group !== item.group));
+function buildWordBank(item, size=6, pool=FONTS){
+  const fontPool = pool.filter(f => (f.family || f.img) && f.id !== item.id);
+  const sameCategory = shuffle(fontPool.filter(f => f.category === item.category));
+  const sameGroup = shuffle(fontPool.filter(f => f.group === item.group && f.category !== item.category));
+  const rest = shuffle(fontPool.filter(f => f.group !== item.group));
 
   const distractors = [];
   for(const f of [...sameCategory, ...sameGroup, ...rest]){
@@ -586,6 +599,14 @@ function buildWordBank(item, size=6){
   }
 
   return shuffle([item, ...distractors]).map(f => f.answer);
+}
+
+// Same idea, but the bank holds category names instead of typeface names —
+// used by the sans-serif "guess the category" quiz.
+function buildCategoryWordBank(correctCategory, size=6){
+  const cats = [...new Set(sansFonts().map(f => f.category))];
+  const others = shuffle(cats.filter(c => c !== correctCategory));
+  return shuffle([correctCategory, ...others.slice(0, size-1)]);
 }
 
 /* ---------------------------------------------------------
@@ -614,6 +635,40 @@ function renderHome(){
         <div class="mode-card" data-mode="all">
           <div class="mtext"><h3>Full Review</h3><p>Terms + Fonts combined</p></div>
           <div class="count">${TERMS.length+FONTS.length} questions</div>
+        </div>
+        <div class="mode-card" data-mode="sans-menu">
+          <div class="mtext"><h3>Sans Serif Quiz</h3><p>Typeface name and category practice, sans-serif only</p></div>
+          <div class="count">${sansFonts().length} typefaces</div>
+        </div>
+      </div>
+    </div>
+  `;
+  document.querySelectorAll(".mode-card").forEach(el=>{
+    el.addEventListener("click", ()=>{
+      if(el.dataset.mode === "sans-menu"){
+        renderSansMenu();
+      } else {
+        startQuiz(el.dataset.mode);
+      }
+    });
+  });
+}
+
+function renderSansMenu(){
+  state = null;
+  homeBtn.classList.add("show");
+  app.innerHTML = `
+    <div class="main-col">
+      <h1 class="title">Sans Serif Quiz</h1>
+      <p class="subtitle">Pick a mode. Both only use the ${sansFonts().length} sans-serif typefaces from the guide.</p>
+      <div class="mode-grid">
+        <div class="mode-card" data-mode="sans-typeface">
+          <div class="mtext"><h3>Typeface Quiz</h3><p>Look at the specimen, type the typeface name</p></div>
+          <div class="count">${sansFonts().length} questions</div>
+        </div>
+        <div class="mode-card" data-mode="sans-category">
+          <div class="mtext"><h3>Category Quiz</h3><p>Look at the specimen, name its category (Grotesque, Geometric, Rounded, ...)</p></div>
+          <div class="count">${sansFonts().length} questions</div>
         </div>
       </div>
     </div>
@@ -659,10 +714,13 @@ function renderQuestion(){
   state.answered = false;
   const item = currentItem();
   const isFont = !!(item.family || item.img);
+  const isCategoryMode = state.mode === "sans-category";
   const total = state.queue.length;
   const pct = Math.round((state.idx/total)*100);
   const showBank = isFont && state.globalRound >= 3;
-  const bank = showBank ? buildWordBank(item) : null;
+  const bank = showBank
+    ? (isCategoryMode ? buildCategoryWordBank(item.answer) : buildWordBank(item, 6, state.deck))
+    : null;
 
   const cardHTML = `
     <div class="progress-row">
@@ -673,7 +731,7 @@ function renderQuestion(){
 
     <div class="card">
       ${isFont ? `
-        <div class="q-kicker">What is the name of this typeface?</div>
+        <div class="q-kicker">${isCategoryMode ? "Which category does this typeface belong to?" : "What is the name of this typeface?"}</div>
         ${item.img ? `
         <div class="font-specimen">
           <img class="specimen-img" src="${item.img}" alt="Typeface specimen">
