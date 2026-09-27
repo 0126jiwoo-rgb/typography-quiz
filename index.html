@@ -784,7 +784,7 @@ function renderFontMenu(){
           <div class="mtext"><h3>Serif</h3><p>Old Style, Transitional, Modern, Slab, Glyphic</p></div>
           <div class="count">${fontsInGroup("serif").length} questions</div>
         </div>
-        <div class="mode-card" data-mode="font-sans">
+        <div class="mode-card" data-mode="sans-menu">
           <div class="mtext"><h3>Sans Serif</h3><p>Grotesque, Geometric, Humanist, Rounded</p></div>
           <div class="count">${fontsInGroup("sans").length} questions</div>
         </div>
@@ -792,8 +792,34 @@ function renderFontMenu(){
           <div class="mtext"><h3>Full</h3><p>Every typeface in the guide</p></div>
           <div class="count">${FONTS.length} questions</div>
         </div>
+      </div>
+    </div>
+  `;
+  document.querySelectorAll(".mode-card").forEach(el=>{
+    el.addEventListener("click", ()=>{
+      if(el.dataset.mode === "sans-menu"){
+        renderSansMenu();
+      } else {
+        startQuiz(el.dataset.mode);
+      }
+    });
+  });
+}
+
+function renderSansMenu(){
+  state = null;
+  homeBtn.classList.add("show");
+  app.innerHTML = `
+    <div class="main-col">
+      <h1 class="title"><span class="title-text">Sans Serif Quiz</span></h1>
+      <p class="subtitle">Pick a mode.</p>
+      <div class="mode-grid">
+        <div class="mode-card" data-mode="font-sans">
+          <div class="mtext"><h3>Typeface</h3><p>Look at the specimen, type the typeface name</p></div>
+          <div class="count">${fontsInGroup("sans").length} questions</div>
+        </div>
         <div class="mode-card" data-mode="font-category">
-          <div class="mtext"><h3>Category</h3><p>Look at the specimen, name its category (Grotesque, Geometric, Rounded, ...) — sans-serif only</p></div>
+          <div class="mtext"><h3>Category</h3><p>Look at the specimen, name its category (Grotesque, Geometric, Rounded, ...)</p></div>
           <div class="count">${fontsInGroup("sans").length} questions</div>
         </div>
       </div>
@@ -843,7 +869,7 @@ function renderQuestion(){
   const isCategoryMode = state.mode === "font-category";
   const total = state.queue.length;
   const pct = Math.round((state.idx/total)*100);
-  const showBank = isFont && state.globalRound >= 3;
+  const showBank = isFont && (isCategoryMode || state.globalRound >= 3);
   const bank = showBank
     ? (isCategoryMode ? buildCategoryWordBank(item.answer) : buildWordBank(item, 6, state.deck))
     : null;
