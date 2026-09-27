@@ -88,17 +88,19 @@
   header.top{
     display:flex;
     align-items:center;
-    justify-content:space-between;
+    justify-content:flex-end;
     width:100%;
-    max-width:640px;
+    max-width:960px;
     padding:18px 20px 0;
   }
-  .brand{
-    font-family:var(--display-font);
-    font-weight:600;
-    font-size:15px;
-    letter-spacing:.01em;
-    color:var(--accent-hover);
+  .site-footer{
+    width:100%;
+    max-width:640px;
+    text-align:center;
+    font-family:var(--ui-font);
+    font-size:11px;
+    color:#d3bcc3;
+    padding:28px 20px 16px;
   }
   .home-btn{
     background:#fff;
@@ -120,7 +122,7 @@
 
   .info-kicker{
     font-family:var(--badge-font);
-    font-size:15px;
+    font-size:18px;
     font-weight:400;
     letter-spacing:.02em;
     color:#fff;
@@ -461,7 +463,6 @@
 <body>
 
 <header class="top">
-  <span class="brand">GRDS 353 · Typography II</span>
   <button class="home-btn" id="homeBtn" aria-label="Home" title="Home">
     <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M3 11.5 12 4l9 7.5"/>
@@ -471,6 +472,8 @@
 </header>
 
 <div class="wrap" id="app"></div>
+
+<footer class="site-footer">GRDS 353 · Typography II</footer>
 
 <script>
 /* ---------------------------------------------------------
