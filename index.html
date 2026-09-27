@@ -90,6 +90,13 @@
     .wrap{padding-top:64px;}
   }
   .hero-center{text-align:center;}
+  .hero-wrap{position:relative;}
+  .decor-star{
+    position:absolute;
+    pointer-events:none;
+    user-select:none;
+    -webkit-text-stroke:0;
+  }
   header.top{
     display:flex;
     align-items:center;
@@ -699,9 +706,13 @@ function renderHome(){
   homeBtn.classList.remove("show");
   app.innerHTML = `
     <div class="main-col">
-      <div class="hero-center">
-        <span class="info-kicker">${TERMS.length} terms · ${FONTS.length} typefaces</span>
-        <h1 class="title"><span class="title-text">Typography Quiz</span></h1>
+      <div class="hero-wrap">
+        <span class="decor-star" style="top:-4px;left:6%;font-size:13px;color:var(--accent2);transform:rotate(-16deg);">★</span>
+        <span class="decor-star" style="top:38px;right:10%;font-size:11px;color:var(--accent);transform:rotate(18deg);">★</span>
+        <div class="hero-center">
+          <span class="info-kicker">${TERMS.length} terms · ${FONTS.length} typefaces</span>
+          <h1 class="title"><span class="title-text">Typography Quiz</span></h1>
+        </div>
       </div>
       <p class="subtitle">Do round 1, then redo only the ones you missed until you get them all right, then finish with one more full round.</p>
       <div class="mode-grid">
