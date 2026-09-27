@@ -41,12 +41,13 @@
   html,body{margin:0;padding:0;}
   body{
     background:
+      linear-gradient(rgba(255,255,255,.22), rgba(255,255,255,.22)),
       radial-gradient(circle at 12px 11px, var(--dot) 1.6px, transparent 1.6px),
       repeating-linear-gradient(90deg,
         var(--bg-a) 0px, var(--bg-a) 24px,
         var(--bg-b) 24px, var(--bg-b) 48px);
-    background-size: 48px 22px, auto;
-    background-position: 0 0, 0 0;
+    background-size: auto, 48px 22px, auto;
+    background-position: 0 0, 0 0, 0 0;
     background-attachment:fixed;
     color:var(--ink);
     font-family:var(--ui-font);
