@@ -6,27 +6,35 @@
 <title>GRDS 353 Typography Quiz</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Cormorant+Garamond&family=Goudy+Bookletter+1911&family=Noto+Serif&family=Cinzel&family=Crimson+Text&family=Vollkorn&family=Playfair+Display&family=Roboto+Slab&family=Zilla+Slab&family=Arvo&family=Bevan&family=Libre+Franklin&family=Work+Sans&family=Roboto&family=Inter:wght@400;500;600;700&family=Noto+Sans&family=Fira+Sans&family=PT+Sans&family=Overpass&family=Montserrat&family=DM+Sans&family=Poppins&family=Varela+Round&family=Quicksand&family=Baloo+2&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Cormorant+Garamond&family=Goudy+Bookletter+1911&family=Noto+Serif&family=Cinzel&family=Crimson+Text&family=Vollkorn&family=Playfair+Display&family=Roboto+Slab&family=Zilla+Slab&family=Arvo&family=Bevan&family=Libre+Franklin&family=Work+Sans&family=Roboto&family=Inter:wght@400;500;600;700&family=Noto+Sans&family=Fira+Sans&family=PT+Sans&family=Overpass&family=Montserrat&family=DM+Sans&family=Poppins&family=Varela+Round&family=Quicksand&family=Baloo+2&family=UnifrakturMaguntia&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#f7f5f1;
+    --bg-a:#fff7fb;
+    --bg-b:#ffe1ee;
     --card:#ffffff;
-    --ink:#1e1c1a;
-    --sub:#6b6560;
-    --line:#e7e2da;
-    --accent:#2c3e2d;
-    --accent-hover:#1e2b1f;
-    --good:#2f7a4a;
-    --good-bg:#e8f5ec;
-    --bad:#c0392b;
-    --bad-bg:#fbebe9;
-    --chip:#eee9e0;
+    --ink:#3a2a4a;
+    --sub:#93809f;
+    --line:#f6d3e6;
+    --accent:#ff4f9a;
+    --accent-hover:#ef2f83;
+    --accent2:#3aa8ff;
+    --accent2-hover:#1c8ce8;
+    --good:#16a463;
+    --good-bg:#e4f9ef;
+    --bad:#ef4444;
+    --bad-bg:#fde8e6;
+    --chip:#ffe6f2;
     --ui-font:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    --display-font:'Fredoka','Inter',sans-serif;
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
-    background:var(--bg);
+    background:
+      repeating-linear-gradient(115deg,
+        var(--bg-a) 0px, var(--bg-a) 46px,
+        var(--bg-b) 46px, var(--bg-b) 92px);
+    background-attachment:fixed;
     color:var(--ink);
     font-family:var(--ui-font);
     min-height:100vh;
@@ -73,32 +81,35 @@
     padding:18px 20px 0;
   }
   .brand{
-    font-family:var(--ui-font);
+    font-family:var(--display-font);
     font-weight:600;
     font-size:15px;
     letter-spacing:.02em;
-    color:var(--sub);
+    color:var(--accent);
   }
   .home-btn{
-    background:none;
-    border:1px solid var(--line);
-    color:var(--sub);
-    padding:6px 12px;
+    background:#fff;
+    border:2px solid var(--line);
+    color:var(--accent);
+    padding:6px 14px;
     border-radius:20px;
     font-size:13px;
+    font-weight:600;
     font-family:var(--ui-font);
     cursor:pointer;
     display:none;
   }
   .home-btn.show{display:inline-block;}
-  .home-btn:hover{border-color:var(--sub);color:var(--ink);}
+  .home-btn:hover{border-color:var(--accent);background:var(--chip);}
 
   h1.title{
-    font-family:var(--ui-font);
-    font-size:34px;
+    font-family:var(--display-font);
+    font-size:38px;
     margin:20px 0 6px;
-    font-weight:700;
+    font-weight:600;
     letter-spacing:-.01em;
+    color:var(--ink);
+    text-shadow:3px 3px 0 var(--chip);
   }
   p.subtitle{
     color:var(--sub);
@@ -114,8 +125,8 @@
   }
   .mode-card{
     background:var(--card);
-    border:1px solid var(--line);
-    border-radius:16px;
+    border:2px solid var(--line);
+    border-radius:20px;
     padding:20px 22px;
     text-align:left;
     cursor:pointer;
@@ -125,15 +136,16 @@
     justify-content:space-between;
   }
   .mode-card:hover{
-    transform:translateY(-2px);
-    box-shadow:0 8px 24px rgba(30,28,26,.08);
-    border-color:#d7d0c4;
+    transform:translateY(-2px) rotate(-.3deg);
+    box-shadow:0 10px 26px rgba(255,79,154,.18);
+    border-color:var(--accent);
   }
   .mode-card .mtext h3{
     margin:0 0 4px;
-    font-size:18px;
+    font-size:19px;
     font-weight:600;
-    font-family:var(--ui-font);
+    font-family:var(--display-font);
+    color:var(--ink);
   }
   .mode-card .mtext p{
     margin:0;
@@ -142,9 +154,10 @@
   }
   .mode-card .count{
     font-size:13px;
-    color:var(--sub);
+    font-weight:600;
+    color:var(--accent-hover);
     background:var(--chip);
-    padding:4px 10px;
+    padding:4px 12px;
     border-radius:20px;
     white-space:nowrap;
   }
@@ -157,38 +170,39 @@
   }
   .phase-label{
     font-size:12px;
-    font-weight:600;
+    font-weight:700;
     letter-spacing:.03em;
     text-transform:uppercase;
-    color:var(--accent);
-    background:#e7ede8;
-    padding:4px 10px;
+    color:#fff;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    padding:5px 12px;
     border-radius:20px;
   }
   .progress-count{
     font-size:13px;
+    font-weight:600;
     color:var(--sub);
   }
   .bar-track{
     width:100%;
-    height:6px;
+    height:8px;
     background:var(--line);
-    border-radius:6px;
+    border-radius:8px;
     overflow:hidden;
     margin-bottom:28px;
   }
   .bar-fill{
     height:100%;
-    background:var(--accent);
+    background:linear-gradient(90deg,var(--accent),var(--accent2));
     transition:width .25s ease;
   }
 
   .card{
     background:var(--card);
-    border:1px solid var(--line);
-    border-radius:20px;
+    border:2px solid var(--line);
+    border-radius:26px;
     padding:36px 28px;
-    box-shadow:0 10px 30px rgba(30,28,26,.05);
+    box-shadow:0 14px 34px rgba(255,79,154,.14);
   }
 
   .q-kicker{
@@ -223,15 +237,16 @@
   .word-bank{
     margin-top:18px;
     padding:14px 16px;
-    background:#f4f2ec;
-    border:1px dashed #d7d0c4;
-    border-radius:12px;
+    background:#fff6fb;
+    border:2px dashed var(--line);
+    border-radius:16px;
   }
   .word-bank-label{
     font-size:11px;
+    font-weight:700;
     text-transform:uppercase;
     letter-spacing:.05em;
-    color:var(--sub);
+    color:var(--accent);
     margin-bottom:10px;
   }
   .word-bank-chips{
@@ -241,17 +256,17 @@
   }
   .word-chip{
     background:#fff;
-    border:1px solid var(--line);
+    border:2px solid var(--line);
     border-radius:20px;
     padding:7px 14px;
     font-size:14px;
     font-family:var(--ui-font);
     cursor:pointer;
     color:var(--ink);
-    transition:border-color .12s ease, background .12s ease;
+    transition:border-color .12s ease, background .12s ease, transform .1s ease;
   }
-  .word-chip:hover{border-color:var(--accent);background:#eef2ee;}
-  .word-chip.picked{border-color:var(--accent);background:#e7ede8;font-weight:600;}
+  .word-chip:hover{border-color:var(--accent2);background:#eef8ff;transform:translateY(-1px);}
+  .word-chip.picked{border-color:var(--accent);background:var(--accent);color:#fff;font-weight:600;}
 
   form.answer-form{
     margin-top:26px;
@@ -260,15 +275,15 @@
     width:100%;
     font-size:17px;
     padding:14px 16px;
-    border-radius:12px;
-    border:1.5px solid var(--line);
-    background:#fdfcfa;
+    border-radius:14px;
+    border:2px solid var(--line);
+    background:#fffbfd;
     color:var(--ink);
     outline:none;
     transition:border-color .12s ease;
     font-family:var(--ui-font);
   }
-  input[type=text]:focus{border-color:var(--accent);}
+  input[type=text]:focus{border-color:var(--accent2);}
   input[type=text].correct{border-color:var(--good);background:var(--good-bg);}
   input[type=text].wrong{border-color:var(--bad);background:var(--bad-bg);}
 
@@ -290,30 +305,46 @@
     gap:10px;
   }
   button.primary{
+    position:relative;
+    overflow:hidden;
     flex:1;
-    background:var(--accent);
+    background:linear-gradient(180deg,#6cc4ff,var(--accent2) 55%,var(--accent2-hover));
     color:#fff;
-    border:none;
+    border:2px solid #fff;
     padding:14px 18px;
-    border-radius:12px;
-    font-size:15px;
+    border-radius:999px;
+    font-size:16px;
+    font-weight:700;
+    font-family:var(--display-font);
+    letter-spacing:.02em;
+    cursor:pointer;
+    box-shadow:0 8px 0 var(--accent2-hover), 0 14px 24px rgba(58,168,255,.35);
+    transition:transform .08s ease, box-shadow .08s ease;
+  }
+  button.primary::before{
+    content:"";
+    position:absolute;
+    top:2px; left:8%;
+    width:84%; height:38%;
+    background:rgba(255,255,255,.55);
+    border-radius:999px;
+    filter:blur(1px);
+    pointer-events:none;
+  }
+  button.primary:hover{transform:translateY(1px);box-shadow:0 6px 0 var(--accent2-hover), 0 10px 18px rgba(58,168,255,.35);}
+  button.primary:active{transform:translateY(4px);box-shadow:0 2px 0 var(--accent2-hover);}
+  button.ghost{
+    background:#fff;
+    border:2px solid var(--line);
+    color:var(--sub);
+    padding:14px 18px;
+    border-radius:999px;
+    font-size:14px;
     font-weight:600;
     font-family:var(--ui-font);
     cursor:pointer;
-    transition:background .12s ease;
   }
-  button.primary:hover{background:var(--accent-hover);}
-  button.ghost{
-    background:none;
-    border:1px solid var(--line);
-    color:var(--sub);
-    padding:14px 18px;
-    border-radius:12px;
-    font-size:14px;
-    font-family:var(--ui-font);
-    cursor:pointer;
-  }
-  button.ghost:hover{border-color:var(--sub);color:var(--ink);}
+  button.ghost:hover{border-color:var(--accent);color:var(--accent);}
 
   .hint{
     margin-top:10px;
@@ -326,10 +357,11 @@
     text-align:center;
   }
   .round-end .big{
-    font-family:var(--ui-font);
-    font-weight:700;
-    font-size:26px;
+    font-family:var(--display-font);
+    font-weight:600;
+    font-size:28px;
     margin:6px 0 8px;
+    color:var(--ink);
   }
   .round-end .score{
     font-size:15px;
@@ -338,9 +370,9 @@
   }
   .missed-list{
     text-align:left;
-    background:#fbfaf7;
-    border:1px solid var(--line);
-    border-radius:12px;
+    background:#fff6fb;
+    border:2px solid var(--line);
+    border-radius:16px;
     padding:14px 16px;
     margin-bottom:24px;
     max-height:220px;
@@ -362,19 +394,19 @@
   }
   .stat{
     flex:1;
-    background:#fbfaf7;
-    border:1px solid var(--line);
-    border-radius:12px;
+    background:#fff6fb;
+    border:2px solid var(--line);
+    border-radius:16px;
     padding:14px 8px;
     text-align:center;
   }
-  .stat .num{font-size:22px;font-weight:700;font-family:var(--ui-font);}
+  .stat .num{font-size:22px;font-weight:700;font-family:var(--display-font);color:var(--accent);}
   .stat .lab{font-size:11px;color:var(--sub);margin-top:2px;}
 
   .emoji{font-size:44px;margin-bottom:6px;}
 
   ::-webkit-scrollbar{height:6px;width:6px;}
-  ::-webkit-scrollbar-thumb{background:#d7d0c4;border-radius:6px;}
+  ::-webkit-scrollbar-thumb{background:var(--line);border-radius:6px;}
 </style>
 </head>
 <body>
@@ -625,19 +657,19 @@ function renderHome(){
       <p class="subtitle">Do round 1, then redo only the ones you missed until you get them all right, then finish with one more full round.</p>
       <div class="mode-grid">
         <div class="mode-card" data-mode="terms">
-          <div class="mtext"><h3>Terms Quiz</h3><p>Read the definition, type the term</p></div>
+          <div class="mtext"><h3>💬 Terms Quiz</h3><p>Read the definition, type the term</p></div>
           <div class="count">${TERMS.length} questions</div>
         </div>
         <div class="mode-card" data-mode="fonts">
-          <div class="mtext"><h3>Font Quiz</h3><p>Look at the specimen, type the typeface name</p></div>
+          <div class="mtext"><h3>🔤 Font Quiz</h3><p>Look at the specimen, type the typeface name</p></div>
           <div class="count">${FONTS.length} questions</div>
         </div>
         <div class="mode-card" data-mode="all">
-          <div class="mtext"><h3>Full Review</h3><p>Terms + Fonts combined</p></div>
+          <div class="mtext"><h3>🎀 Full Review</h3><p>Terms + Fonts combined</p></div>
           <div class="count">${TERMS.length+FONTS.length} questions</div>
         </div>
         <div class="mode-card" data-mode="sans-menu">
-          <div class="mtext"><h3>Sans Serif Quiz</h3><p>Typeface name and category practice, sans-serif only</p></div>
+          <div class="mtext"><h3>🩵 Sans Serif Quiz</h3><p>Typeface name and category practice, sans-serif only</p></div>
           <div class="count">${sansFonts().length} typefaces</div>
         </div>
       </div>
@@ -663,11 +695,11 @@ function renderSansMenu(){
       <p class="subtitle">Pick a mode. Both only use the ${sansFonts().length} sans-serif typefaces from the guide.</p>
       <div class="mode-grid">
         <div class="mode-card" data-mode="sans-typeface">
-          <div class="mtext"><h3>Typeface Quiz</h3><p>Look at the specimen, type the typeface name</p></div>
+          <div class="mtext"><h3>✏️ Typeface Quiz</h3><p>Look at the specimen, type the typeface name</p></div>
           <div class="count">${sansFonts().length} questions</div>
         </div>
         <div class="mode-card" data-mode="sans-category">
-          <div class="mtext"><h3>Category Quiz</h3><p>Look at the specimen, name its category (Grotesque, Geometric, Rounded, ...)</p></div>
+          <div class="mtext"><h3>🗂️ Category Quiz</h3><p>Look at the specimen, name its category (Grotesque, Geometric, Rounded, ...)</p></div>
           <div class="count">${sansFonts().length} questions</div>
         </div>
       </div>
