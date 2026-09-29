@@ -371,6 +371,7 @@
   .feedback.good{background:var(--good-bg);color:var(--good);}
   .feedback.bad{background:var(--bad-bg);color:var(--bad);}
   .feedback b{font-weight:700;}
+  .feedback .fb-font{opacity:.75;font-style:italic;}
 
   .btn-row{
     margin-top:20px;
@@ -694,6 +695,7 @@ function getDeck(mode){
   if(mode==="font-category") return fontsInGroup("sans").map(f => ({
     id: f.id+"-cat",
     answer: f.category,
+    fontName: f.answer,
     img: f.img,
     family: f.family,
     category: f.category,
@@ -1010,10 +1012,11 @@ function submitAnswer(value){
   input.classList.add(correct ? "correct" : "wrong");
   input.readOnly = true;
 
+  const fontNote = item.fontName ? ` <span class="fb-font">(${item.fontName})</span>` : "";
   fb.classList.add("show", correct ? "good" : "bad");
   fb.innerHTML = correct
-    ? `Correct!`
-    : `Not quite. The answer is <b>${item.answer}</b>.`;
+    ? `Correct!${fontNote}`
+    : `Not quite. The answer is <b>${item.answer}</b>.${fontNote}`;
 
   submitBtn.textContent = state.idx+1 < state.queue.length ? "Next question" : "See results";
   document.getElementById("answerInput").focus();
